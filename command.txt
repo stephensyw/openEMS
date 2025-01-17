@@ -1,0 +1,5 @@
+cd ui
+ng serve -c openems-backend-dev
+ng serve -c openems-edge-dev
+
+http://localhost:4200
