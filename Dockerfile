@@ -1,15 +1,16 @@
-# 基於 Java 的基礎鏡像
-FROM openjdk:17-jdk-slim
+# Use a base image with Java runtime
+FROM openjdk:21-jdk-slim
 
-# 設置工作目錄
+# Set the working directory inside the container
 WORKDIR /app
 
-# 複製 JAR 和配置文件
-COPY target/openems.jar /app/openems.jar
-COPY config/ /app/config/
+# Copy the JAR files to the working directory
+COPY ./build/*.jar /app/
 
-# 暴露應用端口
+# Expose port 8080 to allow external access
 EXPOSE 8080
 
-# 啟動應用程序
-CMD ["java", "-jar", "/app/openems.jar"]
+# Set the command to run the JAR files (adjust as needed for your application)
+# If you have two JARs, specify which one to run or add custom logic
+#CMD ["java", "-Djava.security.manager=allow", "-jar", "/app/openems-backend.jar"]
+CMD ["java", "-Djava.security.manager=allow", "-jar", "/app/openems-edge.jar"]

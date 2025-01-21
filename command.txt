@@ -3,3 +3,21 @@ ng serve -c openems-backend-dev
 ng serve -c openems-edge-dev
 
 http://localhost:4200
+
+=============
+0. Assume .jar files are built under openems/build according to official doc
+gradlew buildEdge
+gradlew buildBackend
+
+
+1. How to build docker file (about 15 minutes)
+change Dockerfile accordingly, i.e. the last two lines
+
+docker pull jdk-
+cd openems
+docker build --no-cache -t openems-backend .
+docker build --no-cache -t openems-edge .
+
+2. How to run docker?
+docker run -it -p 8080:8080 --name openems-backend openems-backend
+docker run -it -p 8080:8080 --name openems-edge openems-edge

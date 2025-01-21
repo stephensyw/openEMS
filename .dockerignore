@@ -1,0 +1,23 @@
+# Ignore node_modules folder (for Angular/React projects)
+node_modules
+
+# Ignore build artifacts (for Java)
+target
+dist
+build
+!build/*.jar
+
+# Ignore IDE/editor files
+.idea
+.vscode
+*.iml
+
+# Ignore temporary files
+*.log
+*.tmp
+*.swp
+
+# Ignore environment and config files
+.env
+.DS_Store
+*.bak
