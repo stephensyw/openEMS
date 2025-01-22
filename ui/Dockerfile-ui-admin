@@ -1,0 +1,22 @@
+# Step 1: Use Node.js to build and run the application
+FROM node:18 AS build
+
+WORKDIR /app
+
+# Copy package files and install dependencies
+COPY package*.json ./
+
+# Install Angular CLI globally inside the container
+RUN npm install -g @angular/cli
+
+# Install project dependencies
+RUN npm install
+
+# Copy the entire project
+COPY . .
+
+# Expose the Angular development server's default port (4200)
+EXPOSE 4200
+
+# Default command to run the Angular app (you can override this later)
+CMD ["ng", "serve", "-o", "-c", "openems-backend-dev", "--host", "0.0.0.0"]

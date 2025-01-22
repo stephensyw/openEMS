@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  openems-backend:
+    build:
+      context: ./
+      dockerfile: Dockerfile-backend
+    ports:
+      - "8080:8080"
+    container_name: backend-container
+
+  openems-edge:
+    build:
+      context: ./
+      dockerfile: Dockerfile-edge
+    ports:
+      - "8081:8081"
+    container_name: edge-container
+    
+  openems-ui-backend:
+    build:
+      context: ./ui
+      dockerfile: Dockerfile-ui-admin
+    ports:
+      - "4200:4200"
+    container_name: ui-backend-container
+
+  openems-ui-edge:
+    build:
+      context: ./ui
+      dockerfile: Dockerfile-ui-user
+    ports:
+      - "4201:4201"
+    container_name: ui-edge-container
